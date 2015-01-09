@@ -12,6 +12,8 @@ var meshToBuilding = require('./meshToBuilding.js');
 var buildingMap = require('./buildingMap.js');
 var loadObjects = require('./loadObjects.js');
 
+var dragAndDrop = require('../../tools/dragAndDrop.js');
+
 metadataP.then(function(metadata){
     Object.keys(metadata).forEach(function(id) {
         var building = metadata[id];
@@ -55,7 +57,7 @@ module.exports = function(container, options){
     });
 
     server.on('buildingOk', function(event){
-        console.log('building')
+        console.log('building');
         var mesh = createBuildingMesh(new DataView(event.msg.buffer), event.buildingMetadata.tile);
 
         if(event.buildingMetadata.type === "building"){
