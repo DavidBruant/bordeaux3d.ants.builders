@@ -12,7 +12,7 @@ var meshToBuilding = require('./meshToBuilding.js');
 var buildingMap = require('./buildingMap.js');
 var loadObjects = require('./loadObjects.js');
 
-var dragAndDrop = require('../../tools/dragAndDrop.js');
+// var dragAndDrop = require('./dragAndDrop.js');
 
 metadataP.then(function(metadata){
     Object.keys(metadata).forEach(function(id) {

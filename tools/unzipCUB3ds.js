@@ -89,9 +89,23 @@ var ids = new Map();
 // in : one archive
 // out : a bunch of binaries + metadata
 
+
+function read3dsFile(path, cb){
+    fs.readFile(path, function(err, buff){
+        if(err){
+            cb(err);
+            return;
+        }
+
+        cb(null, new parse3ds(buff));
+    });
+}
+
 function extractBuildings(_3dsPath, x, y){
     var def = Q.defer();
-    parse3ds(_3dsPath, function(err, data){
+
+    read3dsFile(_3dsPath, function(err, data){
+
         if(err){
             def.reject(err);
             return;

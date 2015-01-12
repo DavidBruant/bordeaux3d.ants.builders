@@ -362,13 +362,14 @@ function Parsed3DSFile(buff){
     }
 }
 
-module.exports = function(filename, cb){
-    fs.readFile(filename, function(err, buff){
-        if(err){
-            cb(err);
-            return;
-        }
+module.exports = function(buff){
+    // fs.readFile(filename, function(err, buff){
+    //     if(err){
+    //         cb(err);
+    //         return;
+    //     }
 
-        cb(null, new Parsed3DSFile(buff))
-    });
+    //     cb(null, new Parsed3DSFile(buff))
+    // });
+    return Parsed3DSFile(buff);
 };

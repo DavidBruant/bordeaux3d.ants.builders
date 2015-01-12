@@ -98,6 +98,11 @@ Promise.all([indexDocP, metadataP]).then(function(results){
         res.sendFile(path.join(__dirname, 'front/data/metadata.json'));
     });
     
+    app.post('/upload3ds', function(req, res){
+        // 
+
+    })
+
     io.on('connection', function (socket) {
 
         //when receiving queries send back the data
