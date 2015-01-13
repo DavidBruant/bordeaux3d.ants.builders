@@ -1,10 +1,12 @@
 'use strict';
+var fs = require('graceful-fs');
+var parse3ds = require('./parse3ds.js')
 
-var parse3ds = require('../src/parse3ds.js')
 
-parse3ds('./data/buggyTiles/tile_x127y84.3ds', function(err, data){
-    if(err) throw err;
-    
+module.exports = function(buff){
+    var data = parse3ds(buff);
+
+        
     var objects = data.getObjects();
     
     /*
@@ -31,5 +33,6 @@ parse3ds('./data/buggyTiles/tile_x127y84.3ds', function(err, data){
         vertices: brokenObj.meshes.vertices,
         faces: brokenObj.meshes.faces
     });
-    
-})
+
+}
+

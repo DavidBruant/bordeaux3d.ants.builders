@@ -14,6 +14,8 @@ var https = require('https');
 var express = require('express');
 var compression = require('compression');
 
+var readOne3dsFile = require('./src/get3dsInfos.js');
+
 // arguments
 var mode = process.argv[2] || "dev";
 var config = require("./" + path.join("config", mode+".json")); // will throw if file not found
@@ -99,9 +101,11 @@ Promise.all([indexDocP, metadataP]).then(function(results){
     });
     
     app.post('/upload3ds', function(req, res){
-        // 
 
-    })
+        console.log('files', req.files);
+        //parse 3DS
+        // readOne3dsFile(req.files);
+    });
 
     io.on('connection', function (socket) {
 
